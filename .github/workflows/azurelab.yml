@@ -1,0 +1,30 @@
+name: Creating Azure Resource Groups
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Azure login
+        uses: azure/login@v3
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Run Terraform Init
+        run: terraform init
+
+      - name: Run Terraform Validate
+        run: terraform validate
+
+      - name: Run Terraform Plan
+        run: terraform plan
+
+      - name: Run Terraform Apply
+        run: terraform apply -auto-approve
