@@ -1,0 +1,11 @@
+﻿{
+  "agentId": 21,
+  "agentName": "SREE",
+  "poolId": 1,
+  "poolName": "Default",
+  "serverUrl": "https://pipelinesghubeus6.actions.githubusercontent.com/zTECPqa8s2MGXw0RJ6ELjHujCXUdYZSHvCdwnchP2xYRBB92eW/",
+  "gitHubUrl": "https://github.com/Kandakatlasrikanth/AzureLab",
+  "workFolder": "_work",
+  "useV2Flow": true,
+  "serverUrlV2": "https://broker.actions.githubusercontent.com/"
+}
