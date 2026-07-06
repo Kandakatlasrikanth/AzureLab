@@ -1,0 +1,12 @@
+﻿{
+  "repositoryName": "Kandakatlasrikanth/AzureLab",
+  "pipelineDirectory": "AzureLab",
+  "workspaceDirectory": "AzureLab\\AzureLab",
+  "repositories": {
+    "Kandakatlasrikanth/AzureLab": {
+      "repositoryPath": "AzureLab\\AzureLab",
+      "lastRunOn": "07/05/2026 20:17:38 +05:30"
+    }
+  },
+  "lastRunOn": "07/05/2026 21:44:54 +05:30"
+}

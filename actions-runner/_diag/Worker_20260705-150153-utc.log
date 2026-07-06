@@ -1,0 +1,3237 @@
+[2026-07-05 15:01:53Z INFO HostContext] No proxy settings were found based on environmental variables (http_proxy/https_proxy/HTTP_PROXY/HTTPS_PROXY)
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Root': 'E:\VSCode\actions-runner'
+[2026-07-05 15:01:53Z INFO HostContext] Well known config file 'Credentials': 'E:\VSCode\actions-runner\.credentials'
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Root': 'E:\VSCode\actions-runner'
+[2026-07-05 15:01:53Z INFO HostContext] Well known config file 'Runner': 'E:\VSCode\actions-runner\.runner'
+[2026-07-05 15:01:53Z INFO Worker] Version: 2.335.1
+[2026-07-05 15:01:53Z INFO Worker] Commit: 7d737449ef346f6524f75688d0c9c95fa10ba10a
+[2026-07-05 15:01:53Z INFO Worker] Culture: en-US
+[2026-07-05 15:01:53Z INFO Worker] UI Culture: en-US
+[2026-07-05 15:01:53Z INFO Worker] Waiting to receive the job message from the channel.
+[2026-07-05 15:01:53Z INFO ProcessChannel] Receiving message of length 20965, with hash '837925a10ddc99c4c781230bdddf2049fc220032552d9beab6b70fd4b9a04057'
+[2026-07-05 15:01:53Z INFO Worker] Message received.
+[2026-07-05 15:01:53Z INFO Worker] Job message:
+ {
+  "fileTable": [
+    ".github/workflows/main.yml"
+  ],
+  "mask": [
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    }
+  ],
+  "steps": [
+    {
+      "type": "action",
+      "reference": {
+        "type": "repository",
+        "name": "actions/checkout",
+        "ref": "v4",
+        "repositoryType": "GitHub"
+      },
+      "displayNameToken": {
+        "type": 0,
+        "file": 1,
+        "line": 8,
+        "col": 21,
+        "lit": "check status"
+      },
+      "contextName": "__actions_checkout",
+      "condition": "success()",
+      "id": "e7a44280-2d99-41b9-a6c3-948f297e188b",
+      "name": "__actions_checkout"
+    },
+    {
+      "type": "action",
+      "reference": {
+        "type": "script"
+      },
+      "displayNameToken": {
+        "type": 0,
+        "file": 1,
+        "line": 11,
+        "col": 21,
+        "lit": "Check SQL Service"
+      },
+      "contextName": "__run",
+      "environment": {
+        "type": 2,
+        "file": 1,
+        "line": 25,
+        "col": 17,
+        "map": [
+          {
+            "key": {
+              "type": 0,
+              "file": 1,
+              "line": 25,
+              "col": 17,
+              "lit": "SQL_USER"
+            },
+            "value": {
+              "type": 3,
+              "file": 1,
+              "line": 25,
+              "col": 27,
+              "expr": "secrets.SQL_USER"
+            }
+          },
+          {
+            "key": {
+              "type": 0,
+              "file": 1,
+              "line": 26,
+              "col": 17,
+              "lit": "SQL_PASSWORD"
+            },
+            "value": {
+              "type": 3,
+              "file": 1,
+              "line": 26,
+              "col": 31,
+              "expr": "secrets.SQL_PASSWORD"
+            }
+          }
+        ]
+      },
+      "inputs": {
+        "type": 2,
+        "map": [
+          {
+            "key": "script",
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 13,
+              "col": 20,
+              "lit": "$servers =@(\n  \"SWATHI\",\n  \"SANVIKA\"\n  )\n  foreach ($server in $servers){\n   write-host \"Computer Name : $server\"\n   invoke-command -computername $server -scriptblock {\n   Get-service -name \"*sql*\" -computername $server |select DisplayName, Name, Status\n    }|out-file \"\\\\SREE\\E$\\sql_status.txt\"\n  } \n"
+            }
+          },
+          {
+            "key": "shell",
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 12,
+              "col": 22,
+              "lit": "powershell"
+            }
+          }
+        ]
+      },
+      "condition": "success()",
+      "id": "553339dd-c20f-48d6-b16e-feac986a1912",
+      "name": "__run"
+    }
+  ],
+  "variables": {
+    "Actions.EnableHttpRedirects": {
+      "value": "true"
+    },
+    "DistributedTask.AddWarningToNode12Action": {
+      "value": "true"
+    },
+    "DistributedTask.AddWarningToNode16Action": {
+      "value": "true"
+    },
+    "DistributedTask.AllowRunnerContainerHooks": {
+      "value": "true"
+    },
+    "DistributedTask.DeprecateStepOutputCommands": {
+      "value": "true"
+    },
+    "DistributedTask.DetailUntarFailure": {
+      "value": "true"
+    },
+    "DistributedTask.EnableCompositeActions": {
+      "value": "true"
+    },
+    "DistributedTask.EnableJobServerQueueTelemetry": {
+      "value": "true"
+    },
+    "DistributedTask.EnhancedAnnotations": {
+      "value": "true"
+    },
+    "DistributedTask.ForceGithubJavascriptActionsToNode16": {
+      "value": "true"
+    },
+    "DistributedTask.ForceGithubJavascriptActionsToNode20": {
+      "value": "true"
+    },
+    "DistributedTask.LogTemplateErrorsAsDebugMessages": {
+      "value": "true"
+    },
+    "DistributedTask.MarkJobAsFailedOnWorkerCrash": {
+      "value": "true"
+    },
+    "DistributedTask.NewActionMetadata": {
+      "value": "true"
+    },
+    "DistributedTask.UploadStepSummary": {
+      "value": "true"
+    },
+    "DistributedTask.UseActionArchiveCache": {
+      "value": "true"
+    },
+    "DistributedTask.UseWhich2": {
+      "value": "true"
+    },
+    "RunService.FixEmbeddedIssues": {
+      "value": "true"
+    },
+    "SQL_PASSWORD": {
+      "value": "***",
+      "isSecret": true
+    },
+    "SQL_USER": {
+      "value": "***",
+      "isSecret": true
+    },
+    "actions.runner.requirenode24": {
+      "value": "false"
+    },
+    "actions.runner.usenode24bydefault": {
+      "value": "true"
+    },
+    "actions.runner.warnonnode20": {
+      "value": "true"
+    },
+    "actions_add_check_run_id_to_job_context": {
+      "value": "true"
+    },
+    "actions_batch_action_resolution": {
+      "value": "false"
+    },
+    "actions_container_action_runner_temp": {
+      "value": "true"
+    },
+    "actions_display_helpful_actions_download_errors": {
+      "value": "true"
+    },
+    "actions_runner_compare_workflow_parser": {
+      "value": "false"
+    },
+    "actions_runner_deprecate_linux_arm32": {
+      "value": "true"
+    },
+    "actions_runner_emit_composite_markers": {
+      "value": "false"
+    },
+    "actions_runner_kill_linux_arm32": {
+      "value": "false"
+    },
+    "actions_runner_node20_removal_date": {
+      "value": ""
+    },
+    "actions_runner_node24_default_date": {
+      "value": "June 16th, 2026"
+    },
+    "actions_service_container_command": {
+      "value": "true"
+    },
+    "actions_set_orchestration_id_env_for_actions": {
+      "value": "true"
+    },
+    "actions_skip_retry_complete_job_upon_known_errors": {
+      "value": "true"
+    },
+    "actions_snapshot_preflight_hosted_runner_check": {
+      "value": "false"
+    },
+    "actions_snapshot_preflight_image_gen_pool_check": {
+      "value": "false"
+    },
+    "actions_use_bearer_token_for_codeload": {
+      "value": "false"
+    },
+    "actions_uses_cache_service_v2": {
+      "value": "true"
+    },
+    "github_token": {
+      "value": "***",
+      "isSecret": true
+    },
+    "system.from_run_service": {
+      "value": "true"
+    },
+    "system.github.job": {
+      "value": "check-SQL-service"
+    },
+    "system.github.launch_endpoint": {
+      "value": "https://launch.actions.githubusercontent.com"
+    },
+    "system.github.results_endpoint": {
+      "value": "https://results-receiver.actions.githubusercontent.com/"
+    },
+    "system.github.results_upload_with_sdk": {
+      "value": "true"
+    },
+    "system.github.token": {
+      "value": "***",
+      "isSecret": true
+    },
+    "system.github.token.permissions": {
+      "value": "{\"Contents\":\"read\",\"Metadata\":\"read\",\"Packages\":\"read\"}"
+    },
+    "system.orchestrationId": {
+      "value": "b01ed572-8281-4b1e-9edc-99432a19763c.check-SQL-service.__default"
+    },
+    "system.phaseDisplayName": {
+      "value": "check-SQL-service"
+    },
+    "system.runner.lowdiskspacethreshold": {
+      "value": "100"
+    },
+    "system.runnerEnvironment": {
+      "value": "self-hosted"
+    },
+    "system.runnerGroupName": {
+      "value": "Default"
+    }
+  },
+  "messageType": "RunnerJobRequest",
+  "plan": {
+    "scopeIdentifier": "00000000-0000-0000-0000-000000000000",
+    "planType": "actions",
+    "version": 0,
+    "planId": "b01ed572-8281-4b1e-9edc-99432a19763c",
+    "planGroup": null,
+    "artifactUri": null,
+    "artifactLocation": null,
+    "definition": null,
+    "owner": null
+  },
+  "timeline": {
+    "id": "b01ed572-8281-4b1e-9edc-99432a19763c",
+    "changeId": 0,
+    "location": null
+  },
+  "jobId": "9a28d524-b874-52a9-88ad-ab7bacf3e116",
+  "jobDisplayName": "check-SQL-service",
+  "jobName": "__default",
+  "requestId": 0,
+  "lockedUntil": "0001-01-01T00:00:00",
+  "resources": {
+    "endpoints": [
+      {
+        "data": {
+          "ServerId": "",
+          "ServerName": "",
+          "CacheServerUrl": "https://artifactcache.actions.githubusercontent.com/zTECPqa8s2MGXw0RJ6ELjHujCXUdYZSHvCdwnchP2xYRBB92eW/",
+          "FeedStreamUrl": "wss://results-receiver.actions.githubusercontent.com/_ws/ingest.sock",
+          "ResultsServiceUrl": "https://results-receiver.actions.githubusercontent.com/",
+          "PipelinesServiceUrl": "https://pipelinesghubeus6.actions.githubusercontent.com/zTECPqa8s2MGXw0RJ6ELjHujCXUdYZSHvCdwnchP2xYRBB92eW/",
+          "GenerateIdTokenUrl": "",
+          "ConnectivityChecks": "[\"https://broker.actions.githubusercontent.com/health\",\"https://token.actions.githubusercontent.com/ready\",\"https://run.actions.githubusercontent.com/health\"]"
+        },
+        "name": "SystemVssConnection",
+        "url": "https://run-actions-3-azure-eastus.actions.githubusercontent.com/186/",
+        "authorization": {
+          "parameters": {
+            "AccessToken": "***"
+          },
+          "scheme": "OAuth"
+        },
+        "isShared": false,
+        "isReady": true
+      }
+    ]
+  },
+  "contextData": {
+    "github": {
+      "t": 2,
+      "d": [
+        {
+          "k": "ref",
+          "v": "refs/heads/main"
+        },
+        {
+          "k": "sha",
+          "v": "a3cbdf22ef7011c209e984a2371076ab603d370b"
+        },
+        {
+          "k": "repository",
+          "v": "Kandakatlasrikanth/AzureLab"
+        },
+        {
+          "k": "repository_owner",
+          "v": "Kandakatlasrikanth"
+        },
+        {
+          "k": "repository_owner_id",
+          "v": "281836545"
+        },
+        {
+          "k": "repositoryUrl",
+          "v": "git://github.com/Kandakatlasrikanth/AzureLab.git"
+        },
+        {
+          "k": "run_id",
+          "v": "28744995894"
+        },
+        {
+          "k": "run_number",
+          "v": "4"
+        },
+        {
+          "k": "retention_days",
+          "v": "90"
+        },
+        {
+          "k": "run_attempt",
+          "v": "1"
+        },
+        {
+          "k": "artifact_cache_size_limit",
+          "v": "10"
+        },
+        {
+          "k": "repository_visibility",
+          "v": "public"
+        },
+        {
+          "k": "actor_id",
+          "v": "281836545"
+        },
+        {
+          "k": "actor",
+          "v": "Kandakatlasrikanth"
+        },
+        {
+          "k": "workflow",
+          "v": "SQL Services status"
+        },
+        {
+          "k": "head_ref",
+          "v": ""
+        },
+        {
+          "k": "base_ref",
+          "v": ""
+        },
+        {
+          "k": "event_name",
+          "v": "workflow_dispatch"
+        },
+        {
+          "k": "server_url",
+          "v": "https://github.com"
+        },
+        {
+          "k": "api_url",
+          "v": "https://api.github.com"
+        },
+        {
+          "k": "graphql_url",
+          "v": "https://api.github.com/graphql"
+        },
+        {
+          "k": "ref_name",
+          "v": "main"
+        },
+        {
+          "k": "ref_protected",
+          "v": false
+        },
+        {
+          "k": "ref_type",
+          "v": "branch"
+        },
+        {
+          "k": "secret_source",
+          "v": "Actions"
+        },
+        {
+          "k": "event",
+          "v": {
+            "t": 2,
+            "d": [
+              {
+                "k": "ref",
+                "v": "refs/heads/main"
+              },
+              {
+                "k": "workflow",
+                "v": ".github/workflows/main.yml"
+              },
+              {
+                "k": "inputs",
+                "v": null
+              },
+              {
+                "k": "repository",
+                "v": {
+                  "t": 2,
+                  "d": [
+                    {
+                      "k": "id",
+                      "v": 1256273887.0
+                    },
+                    {
+                      "k": "node_id",
+                      "v": "R_kgDOSuE33w"
+                    },
+                    {
+                      "k": "name",
+                      "v": "AzureLab"
+                    },
+                    {
+                      "k": "full_name",
+                      "v": "Kandakatlasrikanth/AzureLab"
+                    },
+                    {
+                      "k": "private",
+                      "v": false
+                    },
+                    {
+                      "k": "owner",
+                      "v": {
+                        "t": 2,
+                        "d": [
+                          {
+                            "k": "login",
+                            "v": "Kandakatlasrikanth"
+                          },
+                          {
+                            "k": "id",
+                            "v": 281836545.0
+                          },
+                          {
+                            "k": "node_id",
+                            "v": "U_kgDOEMx8AQ"
+                          },
+                          {
+                            "k": "avatar_url",
+                            "v": "https://avatars.githubusercontent.com/u/281836545?v=4"
+                          },
+                          {
+                            "k": "gravatar_id",
+                            "v": ""
+                          },
+                          {
+                            "k": "url",
+                            "v": "https://api.github.com/users/Kandakatlasrikanth"
+                          },
+                          {
+                            "k": "html_url",
+                            "v": "https://github.com/Kandakatlasrikanth"
+                          },
+                          {
+                            "k": "followers_url",
+                            "v": "https://api.github.com/users/Kandakatlasrikanth/followers"
+                          },
+                          {
+                            "k": "following_url",
+                            "v": "https://api.github.com/users/Kandakatlasrikanth/following{/other_user}"
+                          },
+                          {
+                            "k": "gists_url",
+                            "v": "https://api.github.com/users/Kandakatlasrikanth/gists{/gist_id}"
+                          },
+                          {
+                            "k": "starred_url",
+                            "v": "https://api.github.com/users/Kandakatlasrikanth/starred{/owner}{/repo}"
+                          },
+                          {
+                            "k": "subscriptions_url",
+                            "v": "https://api.github.com/users/Kandakatlasrikanth/subscriptions"
+                          },
+                          {
+                            "k": "organizations_url",
+                            "v": "https://api.github.com/users/Kandakatlasrikanth/orgs"
+                          },
+                          {
+                            "k": "repos_url",
+                            "v": "https://api.github.com/users/Kandakatlasrikanth/repos"
+                          },
+                          {
+                            "k": "events_url",
+                            "v": "https://api.github.com/users/Kandakatlasrikanth/events{/privacy}"
+                          },
+                          {
+                            "k": "received_events_url",
+                            "v": "https://api.github.com/users/Kandakatlasrikanth/received_events"
+                          },
+                          {
+                            "k": "type",
+                            "v": "User"
+                          },
+                          {
+                            "k": "user_view_type",
+                            "v": "public"
+                          },
+                          {
+                            "k": "site_admin",
+                            "v": false
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "k": "html_url",
+                      "v": "https://github.com/Kandakatlasrikanth/AzureLab"
+                    },
+                    {
+                      "k": "description",
+                      "v": null
+                    },
+                    {
+                      "k": "fork",
+                      "v": false
+                    },
+                    {
+                      "k": "url",
+                      "v": "https://api.github.com/repos/Kandakatlasrikanth/AzureLab"
+                    },
+                    {
+                      "k": "forks_url",
+                      "v": "https://api.github.com/repos/Kandakatlasrikanth/AzureLab/forks"
+                    },
+                    {
+                      "k": "keys_url",
+                      "v": "https://api.github.com/repos/Kandakatlasrikanth/AzureLab/keys{/key_id}"
+                    },
+                    {
+                      "k": "collaborators_url",
+                      "v": "https://api.github.com/repos/Kandakatlasrikanth/AzureLab/collaborators{/collaborator}"
+                    },
+                    {
+                      "k": "teams_url",
+                      "v": "https://api.github.com/repos/Kandakatlasrikanth/AzureLab/teams"
+                    },
+                    {
+                      "k": "hooks_url",
+                      "v": "https://api.github.com/repos/Kandakatlasrikanth/AzureLab/hooks"
+                    },
+                    {
+                      "k": "issue_events_url",
+                      "v": "https://api.github.com/repos/Kandakatlasrikanth/AzureLab/issues/events{/number}"
+                    },
+                    {
+                      "k": "events_url",
+                      "v": "https://api.github.com/repos/Kandakatlasrikanth/AzureLab/events"
+                    },
+                    {
+                      "k": "assignees_url",
+                      "v": "https://api.github.com/repos/Kandakatlasrikanth/AzureLab/assignees{/user}"
+                    },
+                    {
+                      "k": "branches_url",
+                      "v": "https://api.github.com/repos/Kandakatlasrikanth/AzureLab/branches{/branch}"
+                    },
+                    {
+                      "k": "tags_url",
+                      "v": "https://api.github.com/repos/Kandakatlasrikanth/AzureLab/tags"
+                    },
+                    {
+                      "k": "blobs_url",
+                      "v": "https://api.github.com/repos/Kandakatlasrikanth/AzureLab/git/blobs{/sha}"
+                    },
+                    {
+                      "k": "git_tags_url",
+                      "v": "https://api.github.com/repos/Kandakatlasrikanth/AzureLab/git/tags{/sha}"
+                    },
+                    {
+                      "k": "git_refs_url",
+                      "v": "https://api.github.com/repos/Kandakatlasrikanth/AzureLab/git/refs{/sha}"
+                    },
+                    {
+                      "k": "trees_url",
+                      "v": "https://api.github.com/repos/Kandakatlasrikanth/AzureLab/git/trees{/sha}"
+                    },
+                    {
+                      "k": "statuses_url",
+                      "v": "https://api.github.com/repos/Kandakatlasrikanth/AzureLab/statuses/{sha}"
+                    },
+                    {
+                      "k": "languages_url",
+                      "v": "https://api.github.com/repos/Kandakatlasrikanth/AzureLab/languages"
+                    },
+                    {
+                      "k": "stargazers_url",
+                      "v": "https://api.github.com/repos/Kandakatlasrikanth/AzureLab/stargazers"
+                    },
+                    {
+                      "k": "contributors_url",
+                      "v": "https://api.github.com/repos/Kandakatlasrikanth/AzureLab/contributors"
+                    },
+                    {
+                      "k": "subscribers_url",
+                      "v": "https://api.github.com/repos/Kandakatlasrikanth/AzureLab/subscribers"
+                    },
+                    {
+                      "k": "subscription_url",
+                      "v": "https://api.github.com/repos/Kandakatlasrikanth/AzureLab/subscription"
+                    },
+                    {
+                      "k": "commits_url",
+                      "v": "https://api.github.com/repos/Kandakatlasrikanth/AzureLab/commits{/sha}"
+                    },
+                    {
+                      "k": "git_commits_url",
+                      "v": "https://api.github.com/repos/Kandakatlasrikanth/AzureLab/git/commits{/sha}"
+                    },
+                    {
+                      "k": "comments_url",
+                      "v": "https://api.github.com/repos/Kandakatlasrikanth/AzureLab/comments{/number}"
+                    },
+                    {
+                      "k": "issue_comment_url",
+                      "v": "https://api.github.com/repos/Kandakatlasrikanth/AzureLab/issues/comments{/number}"
+                    },
+                    {
+                      "k": "contents_url",
+                      "v": "https://api.github.com/repos/Kandakatlasrikanth/AzureLab/contents/{+path}"
+                    },
+                    {
+                      "k": "compare_url",
+                      "v": "https://api.github.com/repos/Kandakatlasrikanth/AzureLab/compare/{base}...{head}"
+                    },
+                    {
+                      "k": "merges_url",
+                      "v": "https://api.github.com/repos/Kandakatlasrikanth/AzureLab/merges"
+                    },
+                    {
+                      "k": "archive_url",
+                      "v": "https://api.github.com/repos/Kandakatlasrikanth/AzureLab/{archive_format}{/ref}"
+                    },
+                    {
+                      "k": "downloads_url",
+                      "v": "https://api.github.com/repos/Kandakatlasrikanth/AzureLab/downloads"
+                    },
+                    {
+                      "k": "issues_url",
+                      "v": "https://api.github.com/repos/Kandakatlasrikanth/AzureLab/issues{/number}"
+                    },
+                    {
+                      "k": "pulls_url",
+                      "v": "https://api.github.com/repos/Kandakatlasrikanth/AzureLab/pulls{/number}"
+                    },
+                    {
+                      "k": "milestones_url",
+                      "v": "https://api.github.com/repos/Kandakatlasrikanth/AzureLab/milestones{/number}"
+                    },
+                    {
+                      "k": "notifications_url",
+                      "v": "https://api.github.com/repos/Kandakatlasrikanth/AzureLab/notifications{?since,all,participating}"
+                    },
+                    {
+                      "k": "labels_url",
+                      "v": "https://api.github.com/repos/Kandakatlasrikanth/AzureLab/labels{/name}"
+                    },
+                    {
+                      "k": "releases_url",
+                      "v": "https://api.github.com/repos/Kandakatlasrikanth/AzureLab/releases{/id}"
+                    },
+                    {
+                      "k": "deployments_url",
+                      "v": "https://api.github.com/repos/Kandakatlasrikanth/AzureLab/deployments"
+                    },
+                    {
+                      "k": "created_at",
+                      "v": "2026-06-01T16:11:53Z"
+                    },
+                    {
+                      "k": "updated_at",
+                      "v": "2026-07-05T15:04:10Z"
+                    },
+                    {
+                      "k": "pushed_at",
+                      "v": "2026-07-05T15:04:07Z"
+                    },
+                    {
+                      "k": "git_url",
+                      "v": "git://github.com/Kandakatlasrikanth/AzureLab.git"
+                    },
+                    {
+                      "k": "ssh_url",
+                      "v": "git@github.com:Kandakatlasrikanth/AzureLab.git"
+                    },
+                    {
+                      "k": "clone_url",
+                      "v": "https://github.com/Kandakatlasrikanth/AzureLab.git"
+                    },
+                    {
+                      "k": "svn_url",
+                      "v": "https://github.com/Kandakatlasrikanth/AzureLab"
+                    },
+                    {
+                      "k": "homepage",
+                      "v": null
+                    },
+                    {
+                      "k": "size",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "stargazers_count",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "watchers_count",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "language",
+                      "v": null
+                    },
+                    {
+                      "k": "has_issues",
+                      "v": true
+                    },
+                    {
+                      "k": "has_projects",
+                      "v": true
+                    },
+                    {
+                      "k": "has_downloads",
+                      "v": true
+                    },
+                    {
+                      "k": "has_wiki",
+                      "v": true
+                    },
+                    {
+                      "k": "has_pages",
+                      "v": false
+                    },
+                    {
+                      "k": "has_discussions",
+                      "v": false
+                    },
+                    {
+                      "k": "forks_count",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "mirror_url",
+                      "v": null
+                    },
+                    {
+                      "k": "archived",
+                      "v": false
+                    },
+                    {
+                      "k": "disabled",
+                      "v": false
+                    },
+                    {
+                      "k": "open_issues_count",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "license",
+                      "v": null
+                    },
+                    {
+                      "k": "allow_forking",
+                      "v": true
+                    },
+                    {
+                      "k": "is_template",
+                      "v": false
+                    },
+                    {
+                      "k": "web_commit_signoff_required",
+                      "v": false
+                    },
+                    {
+                      "k": "has_pull_requests",
+                      "v": true
+                    },
+                    {
+                      "k": "pull_request_creation_policy",
+                      "v": "all"
+                    },
+                    {
+                      "k": "topics",
+                      "v": {
+                        "t": 1
+                      }
+                    },
+                    {
+                      "k": "visibility",
+                      "v": "public"
+                    },
+                    {
+                      "k": "forks",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "open_issues",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "watchers",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "default_branch",
+                      "v": "main"
+                    }
+                  ]
+                }
+              },
+              {
+                "k": "sender",
+                "v": {
+                  "t": 2,
+                  "d": [
+                    {
+                      "k": "login",
+                      "v": "Kandakatlasrikanth"
+                    },
+                    {
+                      "k": "id",
+                      "v": 281836545.0
+                    },
+                    {
+                      "k": "node_id",
+                      "v": "U_kgDOEMx8AQ"
+                    },
+                    {
+                      "k": "avatar_url",
+                      "v": "https://avatars.githubusercontent.com/u/281836545?v=4"
+                    },
+                    {
+                      "k": "gravatar_id",
+                      "v": ""
+                    },
+                    {
+                      "k": "url",
+                      "v": "https://api.github.com/users/Kandakatlasrikanth"
+                    },
+                    {
+                      "k": "html_url",
+                      "v": "https://github.com/Kandakatlasrikanth"
+                    },
+                    {
+                      "k": "followers_url",
+                      "v": "https://api.github.com/users/Kandakatlasrikanth/followers"
+                    },
+                    {
+                      "k": "following_url",
+                      "v": "https://api.github.com/users/Kandakatlasrikanth/following{/other_user}"
+                    },
+                    {
+                      "k": "gists_url",
+                      "v": "https://api.github.com/users/Kandakatlasrikanth/gists{/gist_id}"
+                    },
+                    {
+                      "k": "starred_url",
+                      "v": "https://api.github.com/users/Kandakatlasrikanth/starred{/owner}{/repo}"
+                    },
+                    {
+                      "k": "subscriptions_url",
+                      "v": "https://api.github.com/users/Kandakatlasrikanth/subscriptions"
+                    },
+                    {
+                      "k": "organizations_url",
+                      "v": "https://api.github.com/users/Kandakatlasrikanth/orgs"
+                    },
+                    {
+                      "k": "repos_url",
+                      "v": "https://api.github.com/users/Kandakatlasrikanth/repos"
+                    },
+                    {
+                      "k": "events_url",
+                      "v": "https://api.github.com/users/Kandakatlasrikanth/events{/privacy}"
+                    },
+                    {
+                      "k": "received_events_url",
+                      "v": "https://api.github.com/users/Kandakatlasrikanth/received_events"
+                    },
+                    {
+                      "k": "type",
+                      "v": "User"
+                    },
+                    {
+                      "k": "user_view_type",
+                      "v": "public"
+                    },
+                    {
+                      "k": "site_admin",
+                      "v": false
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "k": "workflow_ref",
+          "v": "Kandakatlasrikanth/AzureLab/.github/workflows/main.yml@refs/heads/main"
+        },
+        {
+          "k": "workflow_sha",
+          "v": "a3cbdf22ef7011c209e984a2371076ab603d370b"
+        },
+        {
+          "k": "repository_id",
+          "v": "1256273887"
+        },
+        {
+          "k": "triggering_actor",
+          "v": "Kandakatlasrikanth"
+        }
+      ]
+    },
+    "inputs": {
+      "t": 2
+    },
+    "job": {
+      "t": 2,
+      "d": [
+        {
+          "k": "check_run_id",
+          "v": 85234278770.0
+        },
+        {
+          "k": "workflow_ref",
+          "v": "Kandakatlasrikanth/AzureLab/.github/workflows/main.yml@refs/heads/main"
+        },
+        {
+          "k": "workflow_sha",
+          "v": "a3cbdf22ef7011c209e984a2371076ab603d370b"
+        },
+        {
+          "k": "workflow_repository",
+          "v": "Kandakatlasrikanth/AzureLab"
+        },
+        {
+          "k": "workflow_file_path",
+          "v": ".github/workflows/main.yml"
+        }
+      ]
+    },
+    "matrix": null,
+    "needs": {
+      "t": 2
+    },
+    "strategy": {
+      "t": 2,
+      "d": [
+        {
+          "k": "fail-fast",
+          "v": true
+        },
+        {
+          "k": "job-index",
+          "v": 0.0
+        },
+        {
+          "k": "job-total",
+          "v": 1.0
+        },
+        {
+          "k": "max-parallel",
+          "v": 1.0
+        }
+      ]
+    },
+    "vars": {
+      "t": 2
+    }
+  },
+  "billingOwnerId": "U_kgDOEMx8AQ"
+}
+[2026-07-05 15:01:53Z INFO JobRunner] Job ID 9a28d524-b874-52a9-88ad-ab7bacf3e116
+[2026-07-05 15:01:53Z INFO ConfigurationStore] currentAssemblyLocation: E:\VSCode\actions-runner\bin\Runner.Worker.dll
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:01:53Z INFO ConfigurationStore] binPath: E:\VSCode\actions-runner\bin
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Root': 'E:\VSCode\actions-runner'
+[2026-07-05 15:01:53Z INFO ConfigurationStore] RootFolder: E:\VSCode\actions-runner
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Root': 'E:\VSCode\actions-runner'
+[2026-07-05 15:01:53Z INFO HostContext] Well known config file 'Runner': 'E:\VSCode\actions-runner\.runner'
+[2026-07-05 15:01:53Z INFO ConfigurationStore] ConfigFilePath: E:\VSCode\actions-runner\.runner
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Root': 'E:\VSCode\actions-runner'
+[2026-07-05 15:01:53Z INFO HostContext] Well known config file 'MigratedRunner': 'E:\VSCode\actions-runner\.runner_migrated'
+[2026-07-05 15:01:53Z INFO ConfigurationStore] MigratedConfigFilePath: E:\VSCode\actions-runner\.runner_migrated
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Root': 'E:\VSCode\actions-runner'
+[2026-07-05 15:01:53Z INFO HostContext] Well known config file 'Credentials': 'E:\VSCode\actions-runner\.credentials'
+[2026-07-05 15:01:53Z INFO ConfigurationStore] CredFilePath: E:\VSCode\actions-runner\.credentials
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Root': 'E:\VSCode\actions-runner'
+[2026-07-05 15:01:53Z INFO HostContext] Well known config file 'MigratedCredentials': 'E:\VSCode\actions-runner\.credentials_migrated'
+[2026-07-05 15:01:53Z INFO ConfigurationStore] MigratedCredFilePath: E:\VSCode\actions-runner\.credentials_migrated
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Root': 'E:\VSCode\actions-runner'
+[2026-07-05 15:01:53Z INFO HostContext] Well known config file 'Service': 'E:\VSCode\actions-runner\.service'
+[2026-07-05 15:01:53Z INFO ConfigurationStore] ServiceConfigFilePath: E:\VSCode\actions-runner\.service
+[2026-07-05 15:01:53Z INFO ConfigurationStore] Read setting file: 395 chars
+[2026-07-05 15:01:53Z INFO JobRunner] Initializing launch client
+[2026-07-05 15:01:53Z INFO JobServerQueue] Initializing results client
+[2026-07-05 15:01:53Z INFO ResultServer] Creating websocket client ...wss://results-receiver.actions.githubusercontent.com/_ws/ingest.sock
+[2026-07-05 15:01:53Z INFO ResultServer] Attempting to start websocket client with delay 00:00:00.
+[2026-07-05 15:01:53Z INFO JobServerQueue] Start process web console line queue.
+[2026-07-05 15:01:53Z INFO JobServerQueue] Start process file upload queue.
+[2026-07-05 15:01:53Z INFO JobServerQueue] Start results file upload queue.
+[2026-07-05 15:01:53Z INFO JobServerQueue] Starting results-based upload queue...
+[2026-07-05 15:01:53Z INFO JobServerQueue] Start process timeline update queue.
+[2026-07-05 15:01:53Z INFO ExecutionContext] Initializing Job context
+[2026-07-05 15:01:53Z INFO ExecutionContext] Initialize GitHub context
+[2026-07-05 15:01:53Z INFO ExecutionContext] Initialize Env context
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Root': 'E:\VSCode\actions-runner'
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Diag': 'E:\VSCode\actions-runner\_diag'
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Root': 'E:\VSCode\actions-runner'
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Diag': 'E:\VSCode\actions-runner\_diag'
+[2026-07-05 15:01:53Z INFO JobRunner] Starting the job execution context.
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Root': 'E:\VSCode\actions-runner'
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Work': 'E:\VSCode\actions-runner\_work'
+[2026-07-05 15:01:53Z INFO JobRunner] Validating directory permissions for: 'E:\VSCode\actions-runner\_work'
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Root': 'E:\VSCode\actions-runner'
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Work': 'E:\VSCode\actions-runner\_work'
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Tools': 'E:\VSCode\actions-runner\_work\_tool'
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Root': 'E:\VSCode\actions-runner'
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Work': 'E:\VSCode\actions-runner\_work'
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Temp': 'E:\VSCode\actions-runner\_work\_temp'
+[2026-07-05 15:01:53Z INFO JobRunner] Getting job extension.
+[2026-07-05 15:01:53Z INFO JobRunner] Initialize job. Getting all job steps.
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Root': 'E:\VSCode\actions-runner'
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Diag': 'E:\VSCode\actions-runner\_diag'
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Root': 'E:\VSCode\actions-runner'
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Diag': 'E:\VSCode\actions-runner\_diag'
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Root': 'E:\VSCode\actions-runner'
+[2026-07-05 15:01:53Z INFO HostContext] Well known config file 'Credentials': 'E:\VSCode\actions-runner\.credentials'
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Root': 'E:\VSCode\actions-runner'
+[2026-07-05 15:01:53Z INFO HostContext] Well known config file 'SetupInfo': 'E:\VSCode\actions-runner\.setup_info'
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Root': 'E:\VSCode\actions-runner'
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Work': 'E:\VSCode\actions-runner\_work'
+[2026-07-05 15:01:53Z INFO PipelineDirectoryManager] Loading tracking config if exists: E:\VSCode\actions-runner\_work\_PipelineMapping\Kandakatlasrikanth/AzureLab\PipelineFolder.json
+[2026-07-05 15:01:53Z INFO PipelineDirectoryManager] Updating job run properties.
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Root': 'E:\VSCode\actions-runner'
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Work': 'E:\VSCode\actions-runner\_work'
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Root': 'E:\VSCode\actions-runner'
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Work': 'E:\VSCode\actions-runner\_work'
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Root': 'E:\VSCode\actions-runner'
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Work': 'E:\VSCode\actions-runner\_work'
+[2026-07-05 15:01:53Z INFO JobExtension] Downloading actions
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Root': 'E:\VSCode\actions-runner'
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Work': 'E:\VSCode\actions-runner\_work'
+[2026-07-05 15:01:53Z INFO HostContext] Well known directory 'Actions': 'E:\VSCode\actions-runner\_work\_actions'
+[2026-07-05 15:01:53Z INFO Worker] Listening for cancel message from the channel.
+[2026-07-05 15:01:53Z INFO Worker] Waiting for the job to complete or for a cancel message from the channel.
+[2026-07-05 15:01:54Z INFO ResultServer] Successfully started websocket client.
+[2026-07-05 15:01:54Z INFO JobServerQueue] Try to append 1 batches web console lines for record '51429d0c-4662-40ac-b3b0-b92d69411f6d', success rate: 1/1.
+[2026-07-05 15:01:54Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:01:54Z INFO HostContext] Well known directory 'Root': 'E:\VSCode\actions-runner'
+[2026-07-05 15:01:54Z INFO HostContext] Well known directory 'Work': 'E:\VSCode\actions-runner\_work'
+[2026-07-05 15:01:54Z INFO HostContext] Well known directory 'Actions': 'E:\VSCode\actions-runner\_work\_actions'
+[2026-07-05 15:01:54Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:01:54Z INFO HostContext] Well known directory 'Root': 'E:\VSCode\actions-runner'
+[2026-07-05 15:01:54Z INFO HostContext] Well known directory 'Work': 'E:\VSCode\actions-runner\_work'
+[2026-07-05 15:01:54Z INFO HostContext] Well known directory 'Actions': 'E:\VSCode\actions-runner\_work\_actions'
+[2026-07-05 15:01:54Z INFO ActionManager] Save archive 'https://codeload.github.com/actions/checkout/zip/34e114876b0b11c390a56381ad16ebd13914f8d5' into E:\VSCode\actions-runner\_work\_actions\_temp_e0363428-70ee-4de9-9be4-7db2fb0015ee\7bbfe497-871d-40a6-91cb-dc3eb402a6ec.zip.
+[2026-07-05 15:01:54Z INFO ActionManager] Using Basic token for action archive download.
+[2026-07-05 15:01:54Z INFO JobServerQueue] Try to append 1 batches web console lines for record '51429d0c-4662-40ac-b3b0-b92d69411f6d', success rate: 1/1.
+[2026-07-05 15:01:54Z INFO JobServerQueue] Job timeline record has been updated for the first time.
+[2026-07-05 15:01:56Z INFO ActionManager] Request URL: https://codeload.github.com/actions/checkout/zip/34e114876b0b11c390a56381ad16ebd13914f8d5 X-GitHub-Request-Id: 9552:12218C:14BDB:270141:6A4A7275 Http Status: OK
+[2026-07-05 15:01:56Z INFO ActionManager] Finished getting action repository.
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Root': 'E:\VSCode\actions-runner'
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Work': 'E:\VSCode\actions-runner\_work'
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Actions': 'E:\VSCode\actions-runner\_work\_actions'
+[2026-07-05 15:01:56Z INFO ActionManifestManagerLegacy] Load schema file with definitions: [
+  "null",
+  "boolean",
+  "number",
+  "string",
+  "sequence",
+  "mapping",
+  "any",
+  "action-root",
+  "inputs",
+  "input",
+  "outputs",
+  "output-definition",
+  "runs",
+  "container-runs",
+  "container-runs-args",
+  "container-runs-env",
+  "node-runs",
+  "plugin-runs",
+  "composite-runs",
+  "composite-steps",
+  "composite-step",
+  "run-step",
+  "uses-step",
+  "container-runs-context",
+  "output-value",
+  "input-default-context",
+  "non-empty-string",
+  "string-steps-context",
+  "boolean-steps-context",
+  "step-env",
+  "step-if",
+  "step-with"
+]
+[2026-07-05 15:01:56Z INFO ActionManifestManager] Load schema file with definitions: [
+  "null",
+  "boolean",
+  "number",
+  "string",
+  "sequence",
+  "mapping",
+  "any",
+  "action-root",
+  "inputs",
+  "input",
+  "outputs",
+  "output-definition",
+  "runs",
+  "container-runs",
+  "container-runs-args",
+  "container-runs-env",
+  "node-runs",
+  "plugin-runs",
+  "composite-runs",
+  "composite-steps",
+  "composite-step",
+  "run-step",
+  "uses-step",
+  "container-runs-context",
+  "output-value",
+  "input-default-context",
+  "non-empty-string",
+  "string-steps-context",
+  "boolean-steps-context",
+  "step-env",
+  "step-if",
+  "step-with"
+]
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Root': 'E:\VSCode\actions-runner'
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Work': 'E:\VSCode\actions-runner\_work'
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Actions': 'E:\VSCode\actions-runner\_work\_actions'
+[2026-07-05 15:01:56Z INFO ActionManifestManagerLegacy] Loaded action.yml file: {
+  "name": "Checkout",
+  "description": "Checkout a Git repository at a particular version",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 4,
+          "col": 3,
+          "lit": "repository"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 6,
+          "col": 14,
+          "expr": "github.repository"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 7,
+          "col": 3,
+          "lit": "ref"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 12,
+          "col": 3,
+          "lit": "token"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 24,
+          "col": 14,
+          "expr": "github.token"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 25,
+          "col": 3,
+          "lit": "ssh-key"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 37,
+          "col": 3,
+          "lit": "ssh-known-hosts"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 42,
+          "col": 3,
+          "lit": "ssh-strict"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 47,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 48,
+          "col": 3,
+          "lit": "ssh-user"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 51,
+          "col": 14,
+          "lit": "git"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 52,
+          "col": 3,
+          "lit": "persist-credentials"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 54,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 55,
+          "col": 3,
+          "lit": "path"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 57,
+          "col": 3,
+          "lit": "clean"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 59,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 60,
+          "col": 3,
+          "lit": "filter"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 64,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 65,
+          "col": 3,
+          "lit": "sparse-checkout"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 69,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 70,
+          "col": 3,
+          "lit": "sparse-checkout-cone-mode"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 73,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 74,
+          "col": 3,
+          "lit": "fetch-depth"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 76,
+          "col": 14,
+          "lit": "1"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 77,
+          "col": 3,
+          "lit": "fetch-tags"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 79,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 80,
+          "col": 3,
+          "lit": "show-progress"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 82,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 83,
+          "col": 3,
+          "lit": "lfs"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 85,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 86,
+          "col": 3,
+          "lit": "submodules"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 94,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 95,
+          "col": 3,
+          "lit": "set-safe-directory"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 97,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 98,
+          "col": 3,
+          "lit": "github-server-url"
+        },
+        "value": ""
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": true,
+    "script": "dist/index.js",
+    "pre": null,
+    "post": "dist/index.js",
+    "nodeVersion": "node20",
+    "cleanupCondition": "always()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2026-07-05 15:01:56Z INFO ActionManager] Action node.js file: dist/index.js, no more preparation.
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Root': 'E:\VSCode\actions-runner'
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Work': 'E:\VSCode\actions-runner\_work'
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Actions': 'E:\VSCode\actions-runner\_work\_actions'
+[2026-07-05 15:01:56Z INFO ActionManager] Load action that reference repository from 'E:\VSCode\actions-runner\_work\_actions\actions\checkout\v4'
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Root': 'E:\VSCode\actions-runner'
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Work': 'E:\VSCode\actions-runner\_work'
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Actions': 'E:\VSCode\actions-runner\_work\_actions'
+[2026-07-05 15:01:56Z INFO ActionManifestManagerLegacy] Loaded action.yml file: {
+  "name": "Checkout",
+  "description": "Checkout a Git repository at a particular version",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 4,
+          "col": 3,
+          "lit": "repository"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 6,
+          "col": 14,
+          "expr": "github.repository"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 7,
+          "col": 3,
+          "lit": "ref"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 12,
+          "col": 3,
+          "lit": "token"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 24,
+          "col": 14,
+          "expr": "github.token"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 25,
+          "col": 3,
+          "lit": "ssh-key"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 37,
+          "col": 3,
+          "lit": "ssh-known-hosts"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 42,
+          "col": 3,
+          "lit": "ssh-strict"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 47,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 48,
+          "col": 3,
+          "lit": "ssh-user"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 51,
+          "col": 14,
+          "lit": "git"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 52,
+          "col": 3,
+          "lit": "persist-credentials"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 54,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 55,
+          "col": 3,
+          "lit": "path"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 57,
+          "col": 3,
+          "lit": "clean"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 59,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 60,
+          "col": 3,
+          "lit": "filter"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 64,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 65,
+          "col": 3,
+          "lit": "sparse-checkout"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 69,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 70,
+          "col": 3,
+          "lit": "sparse-checkout-cone-mode"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 73,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 74,
+          "col": 3,
+          "lit": "fetch-depth"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 76,
+          "col": 14,
+          "lit": "1"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 77,
+          "col": 3,
+          "lit": "fetch-tags"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 79,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 80,
+          "col": 3,
+          "lit": "show-progress"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 82,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 83,
+          "col": 3,
+          "lit": "lfs"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 85,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 86,
+          "col": 3,
+          "lit": "submodules"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 94,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 95,
+          "col": 3,
+          "lit": "set-safe-directory"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 97,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 98,
+          "col": 3,
+          "lit": "github-server-url"
+        },
+        "value": ""
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": true,
+    "script": "dist/index.js",
+    "pre": null,
+    "post": "dist/index.js",
+    "nodeVersion": "node20",
+    "cleanupCondition": "always()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2026-07-05 15:01:56Z INFO ActionManager] Action pre node.js file: N/A.
+[2026-07-05 15:01:56Z INFO ActionManager] Action node.js file: dist/index.js.
+[2026-07-05 15:01:56Z INFO ActionManager] Action post node.js file: dist/index.js.
+[2026-07-05 15:01:56Z INFO JobExtension] Adding .
+[2026-07-05 15:01:56Z INFO JobExtension] Adding .
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Root': 'E:\VSCode\actions-runner'
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Diag': 'E:\VSCode\actions-runner\_diag'
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Root': 'E:\VSCode\actions-runner'
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Diag': 'E:\VSCode\actions-runner\_diag'
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Root': 'E:\VSCode\actions-runner'
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Diag': 'E:\VSCode\actions-runner\_diag'
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Root': 'E:\VSCode\actions-runner'
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Diag': 'E:\VSCode\actions-runner\_diag'
+[2026-07-05 15:01:56Z INFO JobExtension] Total accessible running process: 288.
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Root': 'E:\VSCode\actions-runner'
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Work': 'E:\VSCode\actions-runner\_work'
+[2026-07-05 15:01:56Z INFO JobExtension] Start checking server connectivity.
+[2026-07-05 15:01:56Z INFO JobExtension] Check server connectivity for https://broker.actions.githubusercontent.com/health.
+[2026-07-05 15:01:56Z INFO JobExtension] Check server connectivity for https://token.actions.githubusercontent.com/ready.
+[2026-07-05 15:01:56Z INFO JobExtension] Check server connectivity for https://run.actions.githubusercontent.com/health.
+[2026-07-05 15:01:56Z INFO JobExtension] Start checking service connectivity in background.
+[2026-07-05 15:01:56Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "setup_job",
+  "type": "runner",
+  "stage": "Pre",
+  "stepId": "51429d0c-4662-40ac-b3b0-b92d69411f6d",
+  "result": "succeeded",
+  "errorMessages": [],
+  "executionTimeInSeconds": 4,
+  "startTime": "2026-07-05T15:01:53.4098067Z",
+  "finishTime": "2026-07-05T15:01:56.5177197Z"
+}.
+[2026-07-05 15:01:56Z INFO JobRunner] Total job steps: 2.
+[2026-07-05 15:01:56Z INFO JobRunner] Run all job steps.
+[2026-07-05 15:01:56Z INFO DapDebugger] DapDebugger initialized
+[2026-07-05 15:01:56Z INFO StepsRunner] Processing step: DisplayName='check status'
+[2026-07-05 15:01:56Z INFO StepsRunner] Evaluating: success()
+[2026-07-05 15:01:56Z INFO StepsRunner] Result: true
+[2026-07-05 15:01:56Z INFO JobServerQueue] Try to append 1 batches web console lines for record '51429d0c-4662-40ac-b3b0-b92d69411f6d', success rate: 1/1.
+[2026-07-05 15:01:56Z INFO StepsRunner] Starting the step.
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Root': 'E:\VSCode\actions-runner'
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Work': 'E:\VSCode\actions-runner\_work'
+[2026-07-05 15:01:56Z INFO StepsRunner] Which2: 'chcp'
+[2026-07-05 15:01:56Z INFO StepsRunner] Location: 'C:\Windows\system32\chcp.COM'
+[2026-07-05 15:01:56Z INFO ProcessInvokerWrapper] Starting process:
+[2026-07-05 15:01:56Z INFO ProcessInvokerWrapper]   File name: 'C:\Windows\system32\chcp.COM'
+[2026-07-05 15:01:56Z INFO ProcessInvokerWrapper]   Arguments: '65001'
+[2026-07-05 15:01:56Z INFO ProcessInvokerWrapper]   Working directory: 'E:\VSCode\actions-runner\_work'
+[2026-07-05 15:01:56Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2026-07-05 15:01:56Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2026-07-05 15:01:56Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2026-07-05 15:01:56Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2026-07-05 15:01:56Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2026-07-05 15:01:56Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2026-07-05 15:01:56Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2026-07-05 15:01:56Z INFO ProcessInvokerWrapper] Process started with process id 23856, waiting for process exit.
+[2026-07-05 15:01:56Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-07-05 15:01:56Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-07-05 15:01:56Z INFO ProcessInvokerWrapper] Finished process 23856 with exit code 0, and elapsed time 00:00:00.0162716.
+[2026-07-05 15:01:56Z INFO StepsRunner] Successfully returned to code page 65001 (UTF8)
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Root': 'E:\VSCode\actions-runner'
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Work': 'E:\VSCode\actions-runner\_work'
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Actions': 'E:\VSCode\actions-runner\_work\_actions'
+[2026-07-05 15:01:56Z INFO ActionManager] Load action that reference repository from 'E:\VSCode\actions-runner\_work\_actions\actions\checkout\v4'
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Root': 'E:\VSCode\actions-runner'
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Work': 'E:\VSCode\actions-runner\_work'
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Actions': 'E:\VSCode\actions-runner\_work\_actions'
+[2026-07-05 15:01:56Z INFO ActionManifestManagerLegacy] Loaded action.yml file: {
+  "name": "Checkout",
+  "description": "Checkout a Git repository at a particular version",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 4,
+          "col": 3,
+          "lit": "repository"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 6,
+          "col": 14,
+          "expr": "github.repository"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 7,
+          "col": 3,
+          "lit": "ref"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 12,
+          "col": 3,
+          "lit": "token"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 24,
+          "col": 14,
+          "expr": "github.token"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 25,
+          "col": 3,
+          "lit": "ssh-key"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 37,
+          "col": 3,
+          "lit": "ssh-known-hosts"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 42,
+          "col": 3,
+          "lit": "ssh-strict"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 47,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 48,
+          "col": 3,
+          "lit": "ssh-user"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 51,
+          "col": 14,
+          "lit": "git"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 52,
+          "col": 3,
+          "lit": "persist-credentials"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 54,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 55,
+          "col": 3,
+          "lit": "path"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 57,
+          "col": 3,
+          "lit": "clean"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 59,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 60,
+          "col": 3,
+          "lit": "filter"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 64,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 65,
+          "col": 3,
+          "lit": "sparse-checkout"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 69,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 70,
+          "col": 3,
+          "lit": "sparse-checkout-cone-mode"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 73,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 74,
+          "col": 3,
+          "lit": "fetch-depth"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 76,
+          "col": 14,
+          "lit": "1"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 77,
+          "col": 3,
+          "lit": "fetch-tags"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 79,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 80,
+          "col": 3,
+          "lit": "show-progress"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 82,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 83,
+          "col": 3,
+          "lit": "lfs"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 85,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 86,
+          "col": 3,
+          "lit": "submodules"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 94,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 95,
+          "col": 3,
+          "lit": "set-safe-directory"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 97,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 98,
+          "col": 3,
+          "lit": "github-server-url"
+        },
+        "value": ""
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": true,
+    "script": "dist/index.js",
+    "pre": null,
+    "post": "dist/index.js",
+    "nodeVersion": "node20",
+    "cleanupCondition": "always()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2026-07-05 15:01:56Z INFO ActionManager] Action pre node.js file: N/A.
+[2026-07-05 15:01:56Z INFO ActionManager] Action node.js file: dist/index.js.
+[2026-07-05 15:01:56Z INFO ActionManager] Action post node.js file: dist/index.js.
+[2026-07-05 15:01:56Z INFO ExecutionContext] Reserve record order 4 to 6 for post job actions.
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Root': 'E:\VSCode\actions-runner'
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Diag': 'E:\VSCode\actions-runner\_diag'
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Root': 'E:\VSCode\actions-runner'
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Diag': 'E:\VSCode\actions-runner\_diag'
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Root': 'E:\VSCode\actions-runner'
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Work': 'E:\VSCode\actions-runner\_work'
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Temp': 'E:\VSCode\actions-runner\_work\_temp'
+[2026-07-05 15:01:56Z INFO ExecutionContext] Write event payload to E:\VSCode\actions-runner\_work\_temp\_github_workflow\event.json
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Root': 'E:\VSCode\actions-runner'
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Work': 'E:\VSCode\actions-runner\_work'
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Temp': 'E:\VSCode\actions-runner\_work\_temp'
+[2026-07-05 15:01:56Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IFileCommandExtension'
+[2026-07-05 15:01:56Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.AddPathFileCommand, Runner.Worker
+[2026-07-05 15:01:56Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SetEnvFileCommand, Runner.Worker
+[2026-07-05 15:01:56Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.CreateStepSummaryCommand, Runner.Worker
+[2026-07-05 15:01:56Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SaveStateFileCommand, Runner.Worker
+[2026-07-05 15:01:56Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SetOutputFileCommand, Runner.Worker
+[2026-07-05 15:01:56Z INFO ActionManifestManagerLegacy] Input 'repository': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 6,
+  "col": 14,
+  "lit": "Kandakatlasrikanth/AzureLab"
+}
+[2026-07-05 15:01:56Z INFO ActionManifestManagerLegacy] Input 'ref': default value evaluate result: ""
+[2026-07-05 15:01:56Z INFO ActionManifestManagerLegacy] Input 'token': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 24,
+  "col": 14,
+  "lit": "***"
+}
+[2026-07-05 15:01:56Z INFO ActionManifestManagerLegacy] Input 'ssh-key': default value evaluate result: ""
+[2026-07-05 15:01:56Z INFO ActionManifestManagerLegacy] Input 'ssh-known-hosts': default value evaluate result: ""
+[2026-07-05 15:01:56Z INFO ActionManifestManagerLegacy] Input 'ssh-strict': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 47,
+  "col": 14,
+  "lit": "true"
+}
+[2026-07-05 15:01:56Z INFO ActionManifestManagerLegacy] Input 'ssh-user': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 51,
+  "col": 14,
+  "lit": "git"
+}
+[2026-07-05 15:01:56Z INFO ActionManifestManagerLegacy] Input 'persist-credentials': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 54,
+  "col": 14,
+  "lit": "true"
+}
+[2026-07-05 15:01:56Z INFO ActionManifestManagerLegacy] Input 'path': default value evaluate result: ""
+[2026-07-05 15:01:56Z INFO ActionManifestManagerLegacy] Input 'clean': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 59,
+  "col": 14,
+  "lit": "true"
+}
+[2026-07-05 15:01:56Z INFO ActionManifestManagerLegacy] Input 'filter': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 64,
+  "col": 14,
+  "lit": ""
+}
+[2026-07-05 15:01:56Z INFO ActionManifestManagerLegacy] Input 'sparse-checkout': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 69,
+  "col": 14,
+  "lit": ""
+}
+[2026-07-05 15:01:56Z INFO ActionManifestManagerLegacy] Input 'sparse-checkout-cone-mode': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 73,
+  "col": 14,
+  "lit": "true"
+}
+[2026-07-05 15:01:56Z INFO ActionManifestManagerLegacy] Input 'fetch-depth': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 76,
+  "col": 14,
+  "lit": "1"
+}
+[2026-07-05 15:01:56Z INFO ActionManifestManagerLegacy] Input 'fetch-tags': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 79,
+  "col": 14,
+  "lit": "false"
+}
+[2026-07-05 15:01:56Z INFO ActionManifestManagerLegacy] Input 'show-progress': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 82,
+  "col": 14,
+  "lit": "true"
+}
+[2026-07-05 15:01:56Z INFO ActionManifestManagerLegacy] Input 'lfs': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 85,
+  "col": 14,
+  "lit": "false"
+}
+[2026-07-05 15:01:56Z INFO ActionManifestManagerLegacy] Input 'submodules': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 94,
+  "col": 14,
+  "lit": "false"
+}
+[2026-07-05 15:01:56Z INFO ActionManifestManagerLegacy] Input 'set-safe-directory': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 97,
+  "col": 14,
+  "lit": "true"
+}
+[2026-07-05 15:01:56Z INFO ActionManifestManagerLegacy] Input 'github-server-url': default value evaluate result: ""
+[2026-07-05 15:01:56Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IActionCommandExtension'
+[2026-07-05 15:01:56Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.InternalPluginSetRepoPathCommandExtension, Runner.Worker
+[2026-07-05 15:01:56Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SetEnvCommandExtension, Runner.Worker
+[2026-07-05 15:01:56Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SetOutputCommandExtension, Runner.Worker
+[2026-07-05 15:01:56Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SaveStateCommandExtension, Runner.Worker
+[2026-07-05 15:01:56Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.AddPathCommandExtension, Runner.Worker
+[2026-07-05 15:01:56Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.AddMaskCommandExtension, Runner.Worker
+[2026-07-05 15:01:56Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.AddMatcherCommandExtension, Runner.Worker
+[2026-07-05 15:01:56Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.RemoveMatcherCommandExtension, Runner.Worker
+[2026-07-05 15:01:56Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.WarningCommandExtension, Runner.Worker
+[2026-07-05 15:01:56Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.ErrorCommandExtension, Runner.Worker
+[2026-07-05 15:01:56Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.NoticeCommandExtension, Runner.Worker
+[2026-07-05 15:01:56Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.DebugCommandExtension, Runner.Worker
+[2026-07-05 15:01:56Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.GroupCommandExtension, Runner.Worker
+[2026-07-05 15:01:56Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.EndGroupCommandExtension, Runner.Worker
+[2026-07-05 15:01:56Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.EchoCommandExtension, Runner.Worker
+[2026-07-05 15:01:56Z INFO ActionCommandManager] Register action command extension for command internal-set-repo-path
+[2026-07-05 15:01:56Z INFO ActionCommandManager] Register action command extension for command set-env
+[2026-07-05 15:01:56Z INFO ActionCommandManager] Register action command extension for command set-output
+[2026-07-05 15:01:56Z INFO ActionCommandManager] Register action command extension for command save-state
+[2026-07-05 15:01:56Z INFO ActionCommandManager] Register action command extension for command add-path
+[2026-07-05 15:01:56Z INFO ActionCommandManager] Register action command extension for command add-mask
+[2026-07-05 15:01:56Z INFO ActionCommandManager] Register action command extension for command add-matcher
+[2026-07-05 15:01:56Z INFO ActionCommandManager] Register action command extension for command remove-matcher
+[2026-07-05 15:01:56Z INFO ActionCommandManager] Register action command extension for command warning
+[2026-07-05 15:01:56Z INFO ActionCommandManager] Register action command extension for command error
+[2026-07-05 15:01:56Z INFO ActionCommandManager] Register action command extension for command notice
+[2026-07-05 15:01:56Z INFO ActionCommandManager] Register action command extension for command debug
+[2026-07-05 15:01:56Z INFO ActionCommandManager] Register action command extension for command group
+[2026-07-05 15:01:56Z INFO ActionCommandManager] Register action command extension for command endgroup
+[2026-07-05 15:01:56Z INFO ActionCommandManager] Register action command extension for command echo
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Root': 'E:\VSCode\actions-runner'
+[2026-07-05 15:01:56Z INFO HostContext] Well known directory 'Externals': 'E:\VSCode\actions-runner\externals'
+[2026-07-05 15:01:56Z INFO ProcessInvokerWrapper] Starting process:
+[2026-07-05 15:01:56Z INFO ProcessInvokerWrapper]   File name: 'E:\VSCode\actions-runner\externals\node24\bin\node.exe'
+[2026-07-05 15:01:56Z INFO ProcessInvokerWrapper]   Arguments: '"E:\VSCode\actions-runner\_work\_actions\actions\checkout\v4\dist/index.js"'
+[2026-07-05 15:01:56Z INFO ProcessInvokerWrapper]   Working directory: 'E:\VSCode\actions-runner\_work\AzureLab\AzureLab'
+[2026-07-05 15:01:56Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2026-07-05 15:01:56Z INFO ProcessInvokerWrapper]   Encoding web name: utf-8 ; code page: '65001'
+[2026-07-05 15:01:56Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2026-07-05 15:01:56Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2026-07-05 15:01:56Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2026-07-05 15:01:56Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2026-07-05 15:01:56Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2026-07-05 15:01:56Z INFO ProcessInvokerWrapper] Process started with process id 12732, waiting for process exit.
+[2026-07-05 15:01:56Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'e7a44280-2d99-41b9-a6c3-948f297e188b', success rate: 1/1.
+[2026-07-05 15:01:57Z INFO AddMaskCommandExtension] Add new secret mask with length of 524
+[2026-07-05 15:01:57Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'e7a44280-2d99-41b9-a6c3-948f297e188b', success rate: 1/1.
+[2026-07-05 15:01:57Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'e7a44280-2d99-41b9-a6c3-948f297e188b', success rate: 1/1.
+[2026-07-05 15:01:57Z INFO JobServerQueue] Got a step log file to send to results service.
+[2026-07-05 15:01:57Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, E:\VSCode\actions-runner\_diag\blocks\b01ed572-8281-4b1e-9edc-99432a19763c_51429d0c-4662-40ac-b3b0-b92d69411f6d.1
+[2026-07-05 15:01:57Z INFO JobServerQueue] Try to upload 1 log files or attachments, success rate: 1/1.
+[2026-07-05 15:01:58Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'e7a44280-2d99-41b9-a6c3-948f297e188b', success rate: 1/1.
+[2026-07-05 15:01:58Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'e7a44280-2d99-41b9-a6c3-948f297e188b', success rate: 1/1.
+[2026-07-05 15:01:59Z INFO JobServerQueue] Tried to upload 1 file(s) to results, success rate: 1/1.
+[2026-07-05 15:01:59Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'e7a44280-2d99-41b9-a6c3-948f297e188b', success rate: 1/1.
+[2026-07-05 15:02:00Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'e7a44280-2d99-41b9-a6c3-948f297e188b', success rate: 1/1.
+[2026-07-05 15:02:00Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'e7a44280-2d99-41b9-a6c3-948f297e188b', success rate: 1/1.
+[2026-07-05 15:02:01Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'e7a44280-2d99-41b9-a6c3-948f297e188b', success rate: 1/1.
+[2026-07-05 15:02:02Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'e7a44280-2d99-41b9-a6c3-948f297e188b', success rate: 1/1.
+[2026-07-05 15:02:02Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-07-05 15:02:02Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-07-05 15:02:02Z INFO ProcessInvokerWrapper] Finished process 12732 with exit code 0, and elapsed time 00:00:05.7004183.
+[2026-07-05 15:02:02Z INFO CreateStepSummaryCommand] Step Summary file (E:\VSCode\actions-runner\_work\_temp\_runner_file_commands\step_summary_fa85881c-6d24-4350-8dd5-c4fda8c73834) is empty; skipping attachment upload
+[2026-07-05 15:02:02Z INFO StepsRunner] Step result: 
+[2026-07-05 15:02:02Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "actions/checkout",
+  "ref": "v4",
+  "type": "node24",
+  "stage": "Main",
+  "stepId": "e7a44280-2d99-41b9-a6c3-948f297e188b",
+  "stepContextName": "__actions_checkout",
+  "hasPreStep": false,
+  "hasPostStep": true,
+  "result": "succeeded",
+  "errorMessages": [],
+  "executionTimeInSeconds": 6,
+  "startTime": "2026-07-05T15:01:56.5360426Z",
+  "finishTime": "2026-07-05T15:02:02.3574703Z"
+}.
+[2026-07-05 15:02:02Z INFO StepsRunner] No need for updating job result with current step result 'Succeeded'.
+[2026-07-05 15:02:02Z INFO StepsRunner] Current state: job state = ''
+[2026-07-05 15:02:02Z INFO StepsRunner] Processing step: DisplayName='Check SQL Service'
+[2026-07-05 15:02:02Z INFO StepsRunner] Evaluating: success()
+[2026-07-05 15:02:02Z INFO StepsRunner] Result: true
+[2026-07-05 15:02:02Z INFO StepsRunner] Starting the step.
+[2026-07-05 15:02:02Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:02:02Z INFO HostContext] Well known directory 'Root': 'E:\VSCode\actions-runner'
+[2026-07-05 15:02:02Z INFO HostContext] Well known directory 'Work': 'E:\VSCode\actions-runner\_work'
+[2026-07-05 15:02:02Z INFO StepsRunner] Which2: 'chcp'
+[2026-07-05 15:02:02Z INFO StepsRunner] Location: 'C:\Windows\system32\chcp.COM'
+[2026-07-05 15:02:02Z INFO ProcessInvokerWrapper] Starting process:
+[2026-07-05 15:02:02Z INFO ProcessInvokerWrapper]   File name: 'C:\Windows\system32\chcp.COM'
+[2026-07-05 15:02:02Z INFO ProcessInvokerWrapper]   Arguments: '65001'
+[2026-07-05 15:02:02Z INFO ProcessInvokerWrapper]   Working directory: 'E:\VSCode\actions-runner\_work'
+[2026-07-05 15:02:02Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2026-07-05 15:02:02Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2026-07-05 15:02:02Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2026-07-05 15:02:02Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2026-07-05 15:02:02Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2026-07-05 15:02:02Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2026-07-05 15:02:02Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2026-07-05 15:02:02Z INFO ProcessInvokerWrapper] Process started with process id 3284, waiting for process exit.
+[2026-07-05 15:02:02Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-07-05 15:02:02Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-07-05 15:02:02Z INFO ProcessInvokerWrapper] Finished process 3284 with exit code 0, and elapsed time 00:00:00.0102087.
+[2026-07-05 15:02:02Z INFO StepsRunner] Successfully returned to code page 65001 (UTF8)
+[2026-07-05 15:02:02Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:02:02Z INFO HostContext] Well known directory 'Root': 'E:\VSCode\actions-runner'
+[2026-07-05 15:02:02Z INFO HostContext] Well known directory 'Work': 'E:\VSCode\actions-runner\_work'
+[2026-07-05 15:02:02Z INFO HostContext] Well known directory 'Temp': 'E:\VSCode\actions-runner\_work\_temp'
+[2026-07-05 15:02:02Z INFO ExecutionContext] Write event payload to E:\VSCode\actions-runner\_work\_temp\_github_workflow\event.json
+[2026-07-05 15:02:02Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:02:02Z INFO HostContext] Well known directory 'Root': 'E:\VSCode\actions-runner'
+[2026-07-05 15:02:02Z INFO HostContext] Well known directory 'Work': 'E:\VSCode\actions-runner\_work'
+[2026-07-05 15:02:02Z INFO HostContext] Well known directory 'Temp': 'E:\VSCode\actions-runner\_work\_temp'
+[2026-07-05 15:02:02Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IFileCommandExtension'
+[2026-07-05 15:02:02Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IActionCommandExtension'
+[2026-07-05 15:02:02Z INFO ActionCommandManager] Register action command extension for command internal-set-repo-path
+[2026-07-05 15:02:02Z INFO ActionCommandManager] Register action command extension for command set-env
+[2026-07-05 15:02:02Z INFO ActionCommandManager] Register action command extension for command set-output
+[2026-07-05 15:02:02Z INFO ActionCommandManager] Register action command extension for command save-state
+[2026-07-05 15:02:02Z INFO ActionCommandManager] Register action command extension for command add-path
+[2026-07-05 15:02:02Z INFO ActionCommandManager] Register action command extension for command add-mask
+[2026-07-05 15:02:02Z INFO ActionCommandManager] Register action command extension for command add-matcher
+[2026-07-05 15:02:02Z INFO ActionCommandManager] Register action command extension for command remove-matcher
+[2026-07-05 15:02:02Z INFO ActionCommandManager] Register action command extension for command warning
+[2026-07-05 15:02:02Z INFO ActionCommandManager] Register action command extension for command error
+[2026-07-05 15:02:02Z INFO ActionCommandManager] Register action command extension for command notice
+[2026-07-05 15:02:02Z INFO ActionCommandManager] Register action command extension for command debug
+[2026-07-05 15:02:02Z INFO ActionCommandManager] Register action command extension for command group
+[2026-07-05 15:02:02Z INFO ActionCommandManager] Register action command extension for command endgroup
+[2026-07-05 15:02:02Z INFO ActionCommandManager] Register action command extension for command echo
+[2026-07-05 15:02:02Z INFO ScriptHandler] Which2: 'powershell'
+[2026-07-05 15:02:02Z INFO ScriptHandler] Location: 'C:\Windows\System32\WindowsPowerShell\v1.0\powershell.EXE'
+[2026-07-05 15:02:02Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:02:02Z INFO HostContext] Well known directory 'Root': 'E:\VSCode\actions-runner'
+[2026-07-05 15:02:02Z INFO HostContext] Well known directory 'Work': 'E:\VSCode\actions-runner\_work'
+[2026-07-05 15:02:02Z INFO HostContext] Well known directory 'Temp': 'E:\VSCode\actions-runner\_work\_temp'
+[2026-07-05 15:02:02Z INFO ScriptHandler] Which2: 'powershell'
+[2026-07-05 15:02:02Z INFO ScriptHandler] Location: 'C:\Windows\System32\WindowsPowerShell\v1.0\powershell.EXE'
+[2026-07-05 15:02:02Z INFO ProcessInvokerWrapper] Starting process:
+[2026-07-05 15:02:02Z INFO ProcessInvokerWrapper]   File name: 'C:\Windows\System32\WindowsPowerShell\v1.0\powershell.EXE'
+[2026-07-05 15:02:02Z INFO ProcessInvokerWrapper]   Arguments: '-command ". 'E:\VSCode\actions-runner\_work\_temp\1c01072e-d15b-45e3-a4e6-441e9a86be49.ps1'"'
+[2026-07-05 15:02:02Z INFO ProcessInvokerWrapper]   Working directory: 'E:\VSCode\actions-runner\_work\AzureLab\AzureLab'
+[2026-07-05 15:02:02Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2026-07-05 15:02:02Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2026-07-05 15:02:02Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2026-07-05 15:02:02Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2026-07-05 15:02:02Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2026-07-05 15:02:02Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2026-07-05 15:02:02Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2026-07-05 15:02:02Z INFO ProcessInvokerWrapper] Process started with process id 3824, waiting for process exit.
+[2026-07-05 15:02:02Z INFO JobServerQueue] Try to upload 1 log files or attachments, success rate: 1/1.
+[2026-07-05 15:02:02Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'e7a44280-2d99-41b9-a6c3-948f297e188b', success rate: 1/1.
+[2026-07-05 15:02:02Z INFO JobServerQueue] Try to append 1 batches web console lines for record '553339dd-c20f-48d6-b16e-feac986a1912', success rate: 1/1.
+[2026-07-05 15:02:03Z INFO JobServerQueue] Got a step log file to send to results service.
+[2026-07-05 15:02:03Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, E:\VSCode\actions-runner\_diag\blocks\b01ed572-8281-4b1e-9edc-99432a19763c_e7a44280-2d99-41b9-a6c3-948f297e188b.1
+[2026-07-05 15:02:03Z INFO JobServerQueue] Try to append 1 batches web console lines for record '553339dd-c20f-48d6-b16e-feac986a1912', success rate: 1/1.
+[2026-07-05 15:02:03Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-07-05 15:02:03Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-07-05 15:02:03Z INFO ProcessInvokerWrapper] Finished process 3824 with exit code 1, and elapsed time 00:00:00.8941406.
+[2026-07-05 15:02:03Z INFO CreateStepSummaryCommand] Step Summary file (E:\VSCode\actions-runner\_work\_temp\_runner_file_commands\step_summary_ec4a4742-754c-4189-addb-e980f92fe68a) is empty; skipping attachment upload
+[2026-07-05 15:02:03Z INFO StepsRunner] Step result: Failed
+[2026-07-05 15:02:03Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "powershell",
+  "type": "run",
+  "stage": "Main",
+  "stepId": "553339dd-c20f-48d6-b16e-feac986a1912",
+  "stepContextName": "__run",
+  "result": "failed",
+  "errorMessages": [
+    "Process completed with exit code 1."
+  ],
+  "executionTimeInSeconds": 1,
+  "startTime": "2026-07-05T15:02:02.3588867Z",
+  "finishTime": "2026-07-05T15:02:03.2986422Z"
+}.
+[2026-07-05 15:02:03Z INFO StepsRunner] Update job result with current step result 'Failed'.
+[2026-07-05 15:02:03Z INFO StepsRunner] Current state: job state = 'Failed'
+[2026-07-05 15:02:03Z INFO StepsRunner] Processing step: DisplayName='Post check status'
+[2026-07-05 15:02:03Z INFO StepsRunner] Evaluating: always()
+[2026-07-05 15:02:03Z INFO StepsRunner] Result: true
+[2026-07-05 15:02:03Z INFO StepsRunner] Starting the step.
+[2026-07-05 15:02:03Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:02:03Z INFO HostContext] Well known directory 'Root': 'E:\VSCode\actions-runner'
+[2026-07-05 15:02:03Z INFO HostContext] Well known directory 'Work': 'E:\VSCode\actions-runner\_work'
+[2026-07-05 15:02:03Z INFO StepsRunner] Which2: 'chcp'
+[2026-07-05 15:02:03Z INFO StepsRunner] Location: 'C:\Windows\system32\chcp.COM'
+[2026-07-05 15:02:03Z INFO ProcessInvokerWrapper] Starting process:
+[2026-07-05 15:02:03Z INFO ProcessInvokerWrapper]   File name: 'C:\Windows\system32\chcp.COM'
+[2026-07-05 15:02:03Z INFO ProcessInvokerWrapper]   Arguments: '65001'
+[2026-07-05 15:02:03Z INFO ProcessInvokerWrapper]   Working directory: 'E:\VSCode\actions-runner\_work'
+[2026-07-05 15:02:03Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2026-07-05 15:02:03Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2026-07-05 15:02:03Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2026-07-05 15:02:03Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2026-07-05 15:02:03Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2026-07-05 15:02:03Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2026-07-05 15:02:03Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2026-07-05 15:02:03Z INFO ProcessInvokerWrapper] Process started with process id 19812, waiting for process exit.
+[2026-07-05 15:02:03Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-07-05 15:02:03Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-07-05 15:02:03Z INFO ProcessInvokerWrapper] Finished process 19812 with exit code 0, and elapsed time 00:00:00.0132280.
+[2026-07-05 15:02:03Z INFO StepsRunner] Successfully returned to code page 65001 (UTF8)
+[2026-07-05 15:02:03Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:02:03Z INFO HostContext] Well known directory 'Root': 'E:\VSCode\actions-runner'
+[2026-07-05 15:02:03Z INFO HostContext] Well known directory 'Work': 'E:\VSCode\actions-runner\_work'
+[2026-07-05 15:02:03Z INFO HostContext] Well known directory 'Actions': 'E:\VSCode\actions-runner\_work\_actions'
+[2026-07-05 15:02:03Z INFO ActionManager] Load action that reference repository from 'E:\VSCode\actions-runner\_work\_actions\actions\checkout\v4'
+[2026-07-05 15:02:03Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:02:03Z INFO HostContext] Well known directory 'Root': 'E:\VSCode\actions-runner'
+[2026-07-05 15:02:03Z INFO HostContext] Well known directory 'Work': 'E:\VSCode\actions-runner\_work'
+[2026-07-05 15:02:03Z INFO HostContext] Well known directory 'Actions': 'E:\VSCode\actions-runner\_work\_actions'
+[2026-07-05 15:02:03Z INFO ActionManifestManagerLegacy] Loaded action.yml file: {
+  "name": "Checkout",
+  "description": "Checkout a Git repository at a particular version",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 4,
+          "col": 3,
+          "lit": "repository"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 6,
+          "col": 14,
+          "expr": "github.repository"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 7,
+          "col": 3,
+          "lit": "ref"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 12,
+          "col": 3,
+          "lit": "token"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 24,
+          "col": 14,
+          "expr": "github.token"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 25,
+          "col": 3,
+          "lit": "ssh-key"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 37,
+          "col": 3,
+          "lit": "ssh-known-hosts"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 42,
+          "col": 3,
+          "lit": "ssh-strict"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 47,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 48,
+          "col": 3,
+          "lit": "ssh-user"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 51,
+          "col": 14,
+          "lit": "git"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 52,
+          "col": 3,
+          "lit": "persist-credentials"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 54,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 55,
+          "col": 3,
+          "lit": "path"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 57,
+          "col": 3,
+          "lit": "clean"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 59,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 60,
+          "col": 3,
+          "lit": "filter"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 64,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 65,
+          "col": 3,
+          "lit": "sparse-checkout"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 69,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 70,
+          "col": 3,
+          "lit": "sparse-checkout-cone-mode"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 73,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 74,
+          "col": 3,
+          "lit": "fetch-depth"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 76,
+          "col": 14,
+          "lit": "1"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 77,
+          "col": 3,
+          "lit": "fetch-tags"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 79,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 80,
+          "col": 3,
+          "lit": "show-progress"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 82,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 83,
+          "col": 3,
+          "lit": "lfs"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 85,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 86,
+          "col": 3,
+          "lit": "submodules"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 94,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 95,
+          "col": 3,
+          "lit": "set-safe-directory"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 97,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 98,
+          "col": 3,
+          "lit": "github-server-url"
+        },
+        "value": ""
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": true,
+    "script": "dist/index.js",
+    "pre": null,
+    "post": "dist/index.js",
+    "nodeVersion": "node20",
+    "cleanupCondition": "always()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2026-07-05 15:02:03Z INFO ActionManager] Action pre node.js file: N/A.
+[2026-07-05 15:02:03Z INFO ActionManager] Action node.js file: dist/index.js.
+[2026-07-05 15:02:03Z INFO ActionManager] Action post node.js file: dist/index.js.
+[2026-07-05 15:02:03Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:02:03Z INFO HostContext] Well known directory 'Root': 'E:\VSCode\actions-runner'
+[2026-07-05 15:02:03Z INFO HostContext] Well known directory 'Work': 'E:\VSCode\actions-runner\_work'
+[2026-07-05 15:02:03Z INFO HostContext] Well known directory 'Temp': 'E:\VSCode\actions-runner\_work\_temp'
+[2026-07-05 15:02:03Z INFO ExecutionContext] Write event payload to E:\VSCode\actions-runner\_work\_temp\_github_workflow\event.json
+[2026-07-05 15:02:03Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:02:03Z INFO HostContext] Well known directory 'Root': 'E:\VSCode\actions-runner'
+[2026-07-05 15:02:03Z INFO HostContext] Well known directory 'Work': 'E:\VSCode\actions-runner\_work'
+[2026-07-05 15:02:03Z INFO HostContext] Well known directory 'Temp': 'E:\VSCode\actions-runner\_work\_temp'
+[2026-07-05 15:02:03Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IFileCommandExtension'
+[2026-07-05 15:02:03Z INFO ActionManifestManagerLegacy] Input 'repository': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 6,
+  "col": 14,
+  "lit": "Kandakatlasrikanth/AzureLab"
+}
+[2026-07-05 15:02:03Z INFO ActionManifestManagerLegacy] Input 'ref': default value evaluate result: ""
+[2026-07-05 15:02:03Z INFO ActionManifestManagerLegacy] Input 'token': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 24,
+  "col": 14,
+  "lit": "***"
+}
+[2026-07-05 15:02:03Z INFO ActionManifestManagerLegacy] Input 'ssh-key': default value evaluate result: ""
+[2026-07-05 15:02:03Z INFO ActionManifestManagerLegacy] Input 'ssh-known-hosts': default value evaluate result: ""
+[2026-07-05 15:02:03Z INFO ActionManifestManagerLegacy] Input 'ssh-strict': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 47,
+  "col": 14,
+  "lit": "true"
+}
+[2026-07-05 15:02:03Z INFO ActionManifestManagerLegacy] Input 'ssh-user': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 51,
+  "col": 14,
+  "lit": "git"
+}
+[2026-07-05 15:02:03Z INFO ActionManifestManagerLegacy] Input 'persist-credentials': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 54,
+  "col": 14,
+  "lit": "true"
+}
+[2026-07-05 15:02:03Z INFO ActionManifestManagerLegacy] Input 'path': default value evaluate result: ""
+[2026-07-05 15:02:03Z INFO ActionManifestManagerLegacy] Input 'clean': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 59,
+  "col": 14,
+  "lit": "true"
+}
+[2026-07-05 15:02:03Z INFO ActionManifestManagerLegacy] Input 'filter': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 64,
+  "col": 14,
+  "lit": ""
+}
+[2026-07-05 15:02:03Z INFO ActionManifestManagerLegacy] Input 'sparse-checkout': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 69,
+  "col": 14,
+  "lit": ""
+}
+[2026-07-05 15:02:03Z INFO ActionManifestManagerLegacy] Input 'sparse-checkout-cone-mode': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 73,
+  "col": 14,
+  "lit": "true"
+}
+[2026-07-05 15:02:03Z INFO ActionManifestManagerLegacy] Input 'fetch-depth': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 76,
+  "col": 14,
+  "lit": "1"
+}
+[2026-07-05 15:02:03Z INFO ActionManifestManagerLegacy] Input 'fetch-tags': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 79,
+  "col": 14,
+  "lit": "false"
+}
+[2026-07-05 15:02:03Z INFO ActionManifestManagerLegacy] Input 'show-progress': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 82,
+  "col": 14,
+  "lit": "true"
+}
+[2026-07-05 15:02:03Z INFO ActionManifestManagerLegacy] Input 'lfs': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 85,
+  "col": 14,
+  "lit": "false"
+}
+[2026-07-05 15:02:03Z INFO ActionManifestManagerLegacy] Input 'submodules': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 94,
+  "col": 14,
+  "lit": "false"
+}
+[2026-07-05 15:02:03Z INFO ActionManifestManagerLegacy] Input 'set-safe-directory': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 97,
+  "col": 14,
+  "lit": "true"
+}
+[2026-07-05 15:02:03Z INFO ActionManifestManagerLegacy] Input 'github-server-url': default value evaluate result: ""
+[2026-07-05 15:02:03Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IActionCommandExtension'
+[2026-07-05 15:02:03Z INFO ActionCommandManager] Register action command extension for command internal-set-repo-path
+[2026-07-05 15:02:03Z INFO ActionCommandManager] Register action command extension for command set-env
+[2026-07-05 15:02:03Z INFO ActionCommandManager] Register action command extension for command set-output
+[2026-07-05 15:02:03Z INFO ActionCommandManager] Register action command extension for command save-state
+[2026-07-05 15:02:03Z INFO ActionCommandManager] Register action command extension for command add-path
+[2026-07-05 15:02:03Z INFO ActionCommandManager] Register action command extension for command add-mask
+[2026-07-05 15:02:03Z INFO ActionCommandManager] Register action command extension for command add-matcher
+[2026-07-05 15:02:03Z INFO ActionCommandManager] Register action command extension for command remove-matcher
+[2026-07-05 15:02:03Z INFO ActionCommandManager] Register action command extension for command warning
+[2026-07-05 15:02:03Z INFO ActionCommandManager] Register action command extension for command error
+[2026-07-05 15:02:03Z INFO ActionCommandManager] Register action command extension for command notice
+[2026-07-05 15:02:03Z INFO ActionCommandManager] Register action command extension for command debug
+[2026-07-05 15:02:03Z INFO ActionCommandManager] Register action command extension for command group
+[2026-07-05 15:02:03Z INFO ActionCommandManager] Register action command extension for command endgroup
+[2026-07-05 15:02:03Z INFO ActionCommandManager] Register action command extension for command echo
+[2026-07-05 15:02:03Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:02:03Z INFO HostContext] Well known directory 'Root': 'E:\VSCode\actions-runner'
+[2026-07-05 15:02:03Z INFO HostContext] Well known directory 'Externals': 'E:\VSCode\actions-runner\externals'
+[2026-07-05 15:02:03Z INFO ProcessInvokerWrapper] Starting process:
+[2026-07-05 15:02:03Z INFO ProcessInvokerWrapper]   File name: 'E:\VSCode\actions-runner\externals\node24\bin\node.exe'
+[2026-07-05 15:02:03Z INFO ProcessInvokerWrapper]   Arguments: '"E:\VSCode\actions-runner\_work\_actions\actions\checkout\v4\dist/index.js"'
+[2026-07-05 15:02:03Z INFO ProcessInvokerWrapper]   Working directory: 'E:\VSCode\actions-runner\_work\AzureLab\AzureLab'
+[2026-07-05 15:02:03Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2026-07-05 15:02:03Z INFO ProcessInvokerWrapper]   Encoding web name: utf-8 ; code page: '65001'
+[2026-07-05 15:02:03Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2026-07-05 15:02:03Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2026-07-05 15:02:03Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2026-07-05 15:02:03Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2026-07-05 15:02:03Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2026-07-05 15:02:03Z INFO ProcessInvokerWrapper] Process started with process id 9408, waiting for process exit.
+[2026-07-05 15:02:03Z INFO JobServerQueue] Try to upload 1 log files or attachments, success rate: 1/1.
+[2026-07-05 15:02:03Z INFO JobServerQueue] Try to append 1 batches web console lines for record '553339dd-c20f-48d6-b16e-feac986a1912', success rate: 1/1.
+[2026-07-05 15:02:03Z INFO JobServerQueue] Try to append 1 batches web console lines for record '2a0d14a9-ab8e-4e8a-af4b-f953f92ea717', success rate: 1/1.
+[2026-07-05 15:02:03Z INFO AddMaskCommandExtension] Add new secret mask with length of 32
+[2026-07-05 15:02:03Z INFO JobServerQueue] Try to append 1 batches web console lines for record '2a0d14a9-ab8e-4e8a-af4b-f953f92ea717', success rate: 1/1.
+[2026-07-05 15:02:03Z INFO JobServerQueue] Tried to upload 1 file(s) to results, success rate: 1/1.
+[2026-07-05 15:02:04Z INFO JobServerQueue] Try to append 1 batches web console lines for record '2a0d14a9-ab8e-4e8a-af4b-f953f92ea717', success rate: 1/1.
+[2026-07-05 15:02:04Z INFO JobServerQueue] Try to append 1 batches web console lines for record '2a0d14a9-ab8e-4e8a-af4b-f953f92ea717', success rate: 1/1.
+[2026-07-05 15:02:04Z INFO JobServerQueue] Got a step log file to send to results service.
+[2026-07-05 15:02:04Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, E:\VSCode\actions-runner\_diag\blocks\b01ed572-8281-4b1e-9edc-99432a19763c_553339dd-c20f-48d6-b16e-feac986a1912.1
+[2026-07-05 15:02:05Z INFO JobServerQueue] Try to append 1 batches web console lines for record '2a0d14a9-ab8e-4e8a-af4b-f953f92ea717', success rate: 1/1.
+[2026-07-05 15:02:05Z INFO JobServerQueue] Tried to upload 1 file(s) to results, success rate: 1/1.
+[2026-07-05 15:02:06Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-07-05 15:02:06Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-07-05 15:02:06Z INFO ProcessInvokerWrapper] Finished process 9408 with exit code 0, and elapsed time 00:00:02.7993943.
+[2026-07-05 15:02:06Z INFO CreateStepSummaryCommand] Step Summary file (E:\VSCode\actions-runner\_work\_temp\_runner_file_commands\step_summary_48473f45-9585-462c-ac4c-9363ec77dd29) is empty; skipping attachment upload
+[2026-07-05 15:02:06Z INFO StepsRunner] Step result: 
+[2026-07-05 15:02:06Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "actions/checkout",
+  "ref": "v4",
+  "type": "node24",
+  "stage": "Post",
+  "stepId": "2a0d14a9-ab8e-4e8a-af4b-f953f92ea717",
+  "result": "succeeded",
+  "errorMessages": [],
+  "executionTimeInSeconds": 3,
+  "startTime": "2026-07-05T15:02:03.3076642Z",
+  "finishTime": "2026-07-05T15:02:06.1454698Z"
+}.
+[2026-07-05 15:02:06Z INFO StepsRunner] No need for updating job result with current step result 'Succeeded'.
+[2026-07-05 15:02:06Z INFO StepsRunner] Current state: job state = 'Failed'
+[2026-07-05 15:02:06Z INFO JobRunner] Finalize job.
+[2026-07-05 15:02:06Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:02:06Z INFO HostContext] Well known directory 'Root': 'E:\VSCode\actions-runner'
+[2026-07-05 15:02:06Z INFO HostContext] Well known directory 'Diag': 'E:\VSCode\actions-runner\_diag'
+[2026-07-05 15:02:06Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:02:06Z INFO HostContext] Well known directory 'Root': 'E:\VSCode\actions-runner'
+[2026-07-05 15:02:06Z INFO HostContext] Well known directory 'Diag': 'E:\VSCode\actions-runner\_diag'
+[2026-07-05 15:02:06Z INFO JobExtension] Initialize Env context
+[2026-07-05 15:02:06Z INFO JobExtension] Initialize steps context
+[2026-07-05 15:02:06Z INFO JobExtension] Total accessible running process: 288.
+[2026-07-05 15:02:06Z INFO JobExtension] Wait for all connectivity checks to finish.
+[2026-07-05 15:02:06Z INFO JobExtension] Connectivity check result: GitHub.Runner.Worker.JobExtension+CheckResult
+[2026-07-05 15:02:06Z INFO JobExtension] Connectivity check result: GitHub.Runner.Worker.JobExtension+CheckResult
+[2026-07-05 15:02:06Z INFO JobExtension] Connectivity check result: GitHub.Runner.Worker.JobExtension+CheckResult
+[2026-07-05 15:02:06Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "complete_job",
+  "type": "runner",
+  "stage": "Post",
+  "stepId": "54dd62f0-13f7-4f82-924b-bb85a94afbf0",
+  "result": "succeeded",
+  "errorMessages": [
+    "Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/"
+  ],
+  "executionTimeInSeconds": 1,
+  "startTime": "2026-07-05T15:02:06.1551052Z",
+  "finishTime": "2026-07-05T15:02:06.1686319Z"
+}.
+[2026-07-05 15:02:06Z INFO JobRunner] Job result after all job steps finish: Failed
+[2026-07-05 15:02:06Z INFO JobRunner] Completing the job execution context.
+[2026-07-05 15:02:06Z INFO JobRunner] Shutting down the job server queue.
+[2026-07-05 15:02:06Z INFO JobServerQueue] Fire signal to shutdown all queues.
+[2026-07-05 15:02:06Z INFO JobServerQueue] All queue process task stopped.
+[2026-07-05 15:02:06Z INFO JobServerQueue] Try to append 1 batches web console lines for record '54dd62f0-13f7-4f82-924b-bb85a94afbf0', success rate: 1/1.
+[2026-07-05 15:02:06Z INFO JobServerQueue] Web console line queue drained.
+[2026-07-05 15:02:06Z INFO JobServerQueue] Uploading 3 files in one shot.
+[2026-07-05 15:02:06Z INFO JobServerQueue] Try to upload 3 log files or attachments, success rate: 3/3.
+[2026-07-05 15:02:06Z INFO JobServerQueue] File upload queue drained.
+[2026-07-05 15:02:06Z INFO JobServerQueue] Starting results-based upload queue...
+[2026-07-05 15:02:06Z INFO JobServerQueue] Uploading 3 file(s) in one shot through results service.
+[2026-07-05 15:02:06Z INFO JobServerQueue] Got a step log file to send to results service.
+[2026-07-05 15:02:06Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, E:\VSCode\actions-runner\_diag\blocks\b01ed572-8281-4b1e-9edc-99432a19763c_2a0d14a9-ab8e-4e8a-af4b-f953f92ea717.1
+[2026-07-05 15:02:07Z INFO JobServerQueue] Got a step log file to send to results service.
+[2026-07-05 15:02:07Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, E:\VSCode\actions-runner\_diag\blocks\b01ed572-8281-4b1e-9edc-99432a19763c_54dd62f0-13f7-4f82-924b-bb85a94afbf0.1
+[2026-07-05 15:02:08Z INFO JobServerQueue] Got a job log file to send to results service.
+[2026-07-05 15:02:08Z INFO JobServerQueue] Starting upload of job log file to results service ResultsLog, E:\VSCode\actions-runner\_diag\blocks\b01ed572-8281-4b1e-9edc-99432a19763c_9a28d524-b874-52a9-88ad-ab7bacf3e116.1
+[2026-07-05 15:02:09Z INFO JobServerQueue] Tried to upload 3 file(s) to results, success rate: 3/3.
+[2026-07-05 15:02:09Z INFO JobServerQueue] Results upload queue drained.
+[2026-07-05 15:02:09Z INFO JobServerQueue] Timeline update queue drained.
+[2026-07-05 15:02:09Z INFO JobServerQueue] Disposing job server ...
+[2026-07-05 15:02:09Z INFO JobServerQueue] Disposing results server ...
+[2026-07-05 15:02:09Z INFO JobServerQueue] All queue process tasks have been stopped, and all queues are drained.
+[2026-07-05 15:02:09Z INFO TempDirectoryManager] Cleaning runner temp folder: E:\VSCode\actions-runner\_work\_temp
+[2026-07-05 15:02:09Z INFO HostContext] Well known directory 'Bin': 'E:\VSCode\actions-runner\bin'
+[2026-07-05 15:02:09Z INFO HostContext] Well known directory 'Root': 'E:\VSCode\actions-runner'
+[2026-07-05 15:02:09Z INFO HostContext] Well known directory 'Diag': 'E:\VSCode\actions-runner\_diag'
+[2026-07-05 15:02:09Z INFO HostContext] Well known config file 'Telemetry': 'E:\VSCode\actions-runner\_diag\.telemetry'
+[2026-07-05 15:02:09Z INFO JobRunner] Raising job completed against run service
+[2026-07-05 15:02:10Z INFO Worker] Job completed.
